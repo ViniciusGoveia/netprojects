@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Blog.Data
 {
-    public class BlogDataContext : DbContext
+    public class AppDataContext : DbContext
     {
         public DbSet<Category> Categories { get; set; }
         public DbSet<Post> Posts { get; set; }
