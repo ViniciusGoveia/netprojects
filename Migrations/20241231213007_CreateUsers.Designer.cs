@@ -4,6 +4,7 @@ using Blog.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Blog.Migrations
 {
     [DbContext(typeof(AppDataContext))]
-    partial class BlogDataContextModelSnapshot : ModelSnapshot
+    [Migration("20241231213007_CreateUsers")]
+    partial class CreateUsers
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -75,7 +78,7 @@ namespace Blog.Migrations
                         .ValueGeneratedOnAdd()
                         .HasMaxLength(60)
                         .HasColumnType("DATETIME")
-                        .HasDefaultValue(new DateTime(2025, 1, 6, 20, 44, 45, 465, DateTimeKind.Utc).AddTicks(4132))
+                        .HasDefaultValue(new DateTime(2024, 12, 31, 21, 30, 6, 576, DateTimeKind.Utc).AddTicks(137))
                         .HasColumnName("LastUpdateDate");
 
                     b.Property<string>("Slug")
@@ -153,18 +156,19 @@ namespace Blog.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<string>("Bio")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasMaxLength(160)
-                        .HasColumnType("VARCHAR")
-                        .HasColumnName("Email");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("GitHub")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Image")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -175,9 +179,7 @@ namespace Blog.Migrations
 
                     b.Property<string>("PasswordHash")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("VARCHAR")
-                        .HasColumnName("PasswordHash");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Slug")
                         .IsRequired()

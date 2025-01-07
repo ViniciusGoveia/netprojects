@@ -8,7 +8,7 @@ namespace Blog.ViewModels
 {
     public class ResultViewModel<T>
     {
-        public ResultViewModel(T data, List<string> errors)
+        public ResultViewModel(T data, List<string>? errors)
         {
             Data = data;
             Errors = errors;
@@ -31,6 +31,6 @@ namespace Blog.ViewModels
 
         public T Data { get; private set; }
 
-        public List<string> Errors { get; private set; } = [];
+        public List<string>? Errors { get; private set; } = [];
     }
 }
